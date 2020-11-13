@@ -1,0 +1,132 @@
+"""1. Реализовать функцию, принимающую два числа (позиционные аргументы) и выполняющую их деление.
+Числа запрашивать у пользователя, предусмотреть обработку ситуации деления на ноль."""
+
+def division(*args):
+    """
+    делит 2 аргумента друг на друга
+    :param args:
+    :return: float
+    """
+    try:
+        devided = int(input("enter devidev\n"))
+        devider = int(input("enter devider\n"))
+        result = devided/devider
+    except ValueError:
+        return print ("It is non number, repeat")
+    except ZeroDivisionError:
+        return print ("I can't divide by zero, I'm not a God, repeat")
+    return result
+print(f'result {division()}')
+
+"""2. Реализовать функцию, принимающую несколько параметров, 
+описывающих данные пользователя: имя, фамилия, год рождения, 
+город проживания, email, телефон. Функция должна принимать 
+параметры как именованные аргументы. Реализовать вывод данных о пользователе одной строкой."""
+
+def my_func(**kwargs):
+    return kwargs
+
+print(my_func(name=input("enter name \n"),
+              surname=input("enter surname \n"),
+              year =input("enter year \n"),
+              city= input("enter city \n"),
+              email = input("enter email \n"),
+              telephone = input("enter telephone \n")))
+
+"""3. Реализовать функцию my_func(), 
+которая принимает три позиционных аргумента, и возвращает сумму наибольших двух аргументов."""
+
+def my_max(x, y, z):
+"""сравнивает числа, находит 2 максимальных и их складывает"""
+    if x >= z and y >= z:
+        return x + y
+    elif x > y and x < z:
+        return x + z
+    else:
+        return y+z
+print (my_max (x = int(input("enter first number \n")),
+                y = int(input("enter second number \n")),
+                z = int(input("enter third number \n"))))
+"""еще вариант"""
+def my_max(x,y,z):
+    """
+    принимает на вход 3 числа и возвращает максимальную сумму
+    :param x:
+    :param y:
+    :param z:
+    :return:
+    """
+    return max(x+y, y+z, z+x)
+print (my_max (x = int(input("enter first number \n")),
+               y = int(input("enter second number \n")),
+               z = int(input("enter third number \n"))))
+
+""" 4. Программа принимает действительное положительное число x и целое отрицательное число y. 
+Необходимо выполнить возведение числа x в степень y. Задание необходимо реализовать в виде функции my_func(x, y). 
+При решении задания необходимо обойтись без встроенной функции возведения числа в степень.
+Подсказка: попробуйте решить задачу двумя способами. Первый — возведение в степень с помощью оператора **. 
+Второй — более сложная реализация без оператора **, предусматривающая использование цикла."""
+
+def my_func (x, y):
+    return 1 / x ** abs(y)
+print (my_func (x = int(input("Введите x \n")),
+                y = int(input("Введите целое отрицательное число \n"))))
+
+"""x**y = (x+x+x (x раз)) + (x+x+x (x раз)) .... y раз"""
+
+# def my_multipl(x,y):
+#     """умножаем x y раз"""
+#     result =0
+#     for _ in range(y):
+#         result +=x
+#         return result
+#
+# def my_func(x:float, y:int):
+#     """возводит в степень, в сложении 0 не влияет на результат, а в умножении 1 не влияет"""
+#     result=1
+#     for _ in rang(abs(y)):
+#         result = my_multipl(result, x)
+#     return result if y > 0 else 1/result
+
+"""5. Программа запрашивает у пользователя строку чисел, разделенных пробелом. 
+При нажатии Enter должна выводиться сумма чисел. 
+Пользователь может продолжить ввод чисел, разделенных пробелом и снова нажать Enter. 
+Сумма вновь введенных чисел будет добавляться к уже подсчитанной сумме. 
+Но если вместо числа вводится специальный символ, выполнение программы завершается. 
+Если специальный символ введен после нескольких чисел, 
+то вначале нужно добавить сумму этих чисел к полученной ранее сумме и после этого завершить программу."""
+
+def my_sum (*args):
+    sum_res = 0
+    ex = False
+    while ex == False:
+        number = input('Input numbers or Q for quit - ').split()
+
+        res = 0
+        for el in range(len(number)):
+            if number[el] == 'q' or number[el] == 'Q':
+                ex = True
+                break
+            else:
+                res = res + int(number[el])
+        sum_res = sum_res + res
+        print(f'Current sum is {sum_res}')
+    print(f'Your final sum is {sum_res}')
+
+
+my_sum()
+
+"""
+6. Реализовать функцию int_func(), принимающую слово из маленьких латинских букв и возвращающую его же, 
+но с прописной первой буквой. Например, print(int_func(‘text’)) -> Text.
+Продолжить работу над заданием. В программу должна попадать строка из слов, 
+разделенных пробелом. Каждое слово состоит из латинских букв в нижнем регистре. 
+Сделать вывод исходной строки, но каждое слово должно начинаться с заглавной буквы.
+ Необходимо использовать написанную ранее функцию int_func().
+"""
+def int_func (*args):
+    word = input("Input words \n")
+    print(word.title())
+    return
+int_func()
+
